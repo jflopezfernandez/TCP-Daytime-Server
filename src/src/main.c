@@ -54,6 +54,8 @@ int main(int argc, char *argv[])
 	BindToSocket(listenfd, (SocketAddress *) &servaddr, sizeof (servaddr));
 	ListenForConnections(listenfd, LISTENQ);
 
+	// TODO: Continue here
+
 	return EXIT_SUCCESS;
 }
 
