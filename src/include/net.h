@@ -250,7 +250,6 @@ struct unp_in_pkt_info {
 
 #define SA struct sockaddr
 
-#define HAVE_STRUCT_SOCKADDR_STORAGE
 #ifndef HAVE_STRUCT_SOCKADDR_STORAGE
 
 /** RFC-3493: Protocol-independent placeholder for socket addresses

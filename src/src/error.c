@@ -20,7 +20,7 @@ void
 err_sys(const char *fmt, ...) {
     va_list ap;
 
-    va_start(ap);
+    va_start(ap, fmt);
     err_doit(1, LOG_ERR, fmt, ap);
     va_end(ap);
 

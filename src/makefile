@@ -17,7 +17,9 @@ CFLAGS   := -std=c11 -Wall -Wextra -pedantic
 
 COMPILE  := $(CC) $(CPPFLAGS) $(CFLAGS)
 
-SOURCES  := main.c
+SOURCES  := main.c \
+	          error.c
+
 OBJECTS  := $(patsubst %.c,%.o,$(SOURCES))
 
 PROGRAM  := echo
@@ -25,7 +27,10 @@ PROGRAM  := echo
 $(PROGRAM): $(OBJECTS)
 	$(COMPILE) -o $@ $^
 
-$(OBJECTS): $(SOURCES)
+#$(OBJECTS): $(SOURCES)
+#	$(COMPILE) -c -o $@ $^
+
+%.o: %.c
 	$(COMPILE) -c -o $@ $^
 
 clean:
