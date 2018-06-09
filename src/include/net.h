@@ -365,9 +365,14 @@ int
 createSocket(int family, int type, int protocol);
 
 int
-connectSocket(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+connectSocket(int sockfd, const struct sockaddr *addr, size_t addrlen);
 
+// TODO: Fix prototype
 int readSocketStream();
+
+int ListenForConnections(int socketfd, int backlog);
+
+int BindToSocket(int sockfd, const struct sockaddr *addr, size_t addrlen);
 
 #endif // SRC_INCLUDES_NET_H_
 

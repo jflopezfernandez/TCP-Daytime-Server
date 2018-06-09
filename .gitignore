@@ -60,5 +60,9 @@ dkms.conf
 /cmake-build-debug/
 /cmake-build-release/
 
+# I put some linux headers in a directory on windows for CLion to work
+# correctly. Ignore this directory.
+/src/include/wait.h
+
 # Ignore CMake for now
 CMakeLists.txt

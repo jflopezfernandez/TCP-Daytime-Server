@@ -42,7 +42,7 @@ createSocket(int family, int type, int protocol) {
 	return status;
 }
 
-int connectSocket(int sockfd, const struct sockaddr *addr, socklen_t addrlen) {
+int connectSocket(int sockfd, const struct sockaddr *addr, size_t addrlen) {
 	int status = NULL;
 
 	if ((n = connect(sockfd, addr, addrlen)) < 0) {
@@ -52,10 +52,31 @@ int connectSocket(int sockfd, const struct sockaddr *addr, socklen_t addrlen) {
 	return status;
 }
 
+// TODO: Implement readSocketStream()
 int readSocketStream() {
 	err_sys("TODO: Implement function (readSocketStream)");
 
 	exit(EXIT_FAILURE);
 
 	return -1;
+}
+
+int ListenForConnections(int socketfd, int backlog) {
+	int status = NULL;
+
+	if ((n = listen(socketfd, backlog)) < 0) {
+		err_sys("Listen error");
+	}
+
+	return status;
+}
+
+int BindToSocket(int sockfd, const struct sockaddr *addr, size_t addrlen) {
+	int status = NULL;
+
+	if ((status = bind(sockfd, (SocketAddress *) addr, addrlen)) < 0) {
+		err_sys("Bind error");
+	}
+
+	return status;
 }
