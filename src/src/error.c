@@ -17,6 +17,16 @@ err_ret(const char *fmt, ...) {
 }
 
 void
+err_sys(const char *fmt, ...) {
+    va_list ap;
+
+    va_start(ap);
+    err_doit(1, LOG_ERR, fmt, ap);
+    va_end(ap);
+    exit(1);
+}
+
+void
 err_dump(const char *fmt, ...) {
     va_list ap;
 
