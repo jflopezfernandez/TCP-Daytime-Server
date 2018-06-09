@@ -21,8 +21,12 @@
 #define TCP_DAYTIME_SERVER_ERROR_H
 
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <syslog.h>
+
+#include "net.h"
 
 /** @fn void err_ret(const char *fmt, ...)
  *  @brief Nonfatal error related to system call.

@@ -23,7 +23,8 @@ err_sys(const char *fmt, ...) {
     va_start(ap);
     err_doit(1, LOG_ERR, fmt, ap);
     va_end(ap);
-    exit(1);
+
+    exit(EXIT_FAILURE);
 }
 
 void
@@ -33,6 +34,7 @@ err_dump(const char *fmt, ...) {
     va_start(ap, fmt);
     err_doit(1, LOG_ERR, fmt, ap);
     va_end(ap);
+
     abort();
 }
 
@@ -54,7 +56,7 @@ err_quit(const char *fmt, ...) {
     va_start(ap, fmt);
     err_doit(0, LOG_ERR, fmt, ap);
     va_end(ap);
-    exit(1);
+    exit(EXIT_FAILURE);
 }
 
 static void
