@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	servaddr.sin_port = htons(13);
 
-	BindToSocket(listenfd, (SocketAddress *) &servaddr, sizeof (servaddr));
+	BindToSocket(listenfd, (SocketAddress) &servaddr, sizeof (servaddr));
 	ListenForConnections(listenfd, LISTENQ);
 
 	// TODO: Continue here

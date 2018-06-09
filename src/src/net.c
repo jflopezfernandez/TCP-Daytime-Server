@@ -45,7 +45,7 @@ createSocket(int family, int type, int protocol) {
 int connectSocket(int sockfd, const struct sockaddr *addr, size_t addrlen) {
 	int status = NULL;
 
-	if ((n = connect(sockfd, addr, addrlen)) < 0) {
+	if ((status = connect(sockfd, addr, addrlen)) < 0) {
 		err_sys("Connection error");
 	}
 
@@ -64,7 +64,7 @@ int readSocketStream() {
 int ListenForConnections(int socketfd, int backlog) {
 	int status = NULL;
 
-	if ((n = listen(socketfd, backlog)) < 0) {
+	if ((status = listen(socketfd, backlog)) < 0) {
 		err_sys("Listen error");
 	}
 
@@ -74,7 +74,7 @@ int ListenForConnections(int socketfd, int backlog) {
 int BindToSocket(int sockfd, const struct sockaddr *addr, size_t addrlen) {
 	int status = NULL;
 
-	if ((status = bind(sockfd, (SocketAddress *) addr, addrlen)) < 0) {
+	if ((status = bind(sockfd, (SocketAddress) addr, addrlen)) < 0) {
 		err_sys("Bind error");
 	}
 
