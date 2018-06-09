@@ -239,11 +239,19 @@ struct unp_in_pkt_info {
  *
  */
 
+#define SERV_PORT 9877
+#define SERV_PORT_STR "9877"
+#define UNIXSTR_PATH "/tmp/unix.str"
+#define UNIXDG_PATH "/tmp/unix.dg"
+
 /** The following shortens all the typecasts of pointer arguments:
  *
  */
 
 #define SA struct sockaddr
+
+#define HAVE_STRUCT_SOCKADDR_STORAGE
+#ifndef HAVE_STRUCT_SOCKADDR_STORAGE
 
 /** RFC-3493: Protocol-independent placeholder for socket addresses
  *
