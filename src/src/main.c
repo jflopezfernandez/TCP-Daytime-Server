@@ -19,10 +19,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "error.h"
 #include "net.h"
 
-// TODO: Implement err_quit()
-// TODO: Implement err_sys()
+// TODO: Continue with main.c (pg. 6)
 
 int main(int argc, char *argv[])
 {
