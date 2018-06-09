@@ -1,0 +1,35 @@
+In file included from include/error.h:29,
+                 from src/main.c:22:
+include/net.h:261:8: error: redefinition of ‘struct sockaddr_storage’
+ struct sockaddr_storage {
+        ^~~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/sys/socket.h:38,
+                 from include/net.h:26,
+                 from include/error.h:29,
+                 from src/main.c:22:
+/usr/include/x86_64-linux-gnu/bits/socket.h:166:8: note: originally defined here
+ struct sockaddr_storage
+        ^~~~~~~~~~~~~~~~
+In file included from include/error.h:29,
+                 from src/main.c:22:
+include/net.h:263:5: error: unknown type name ‘u_char’
+     u_char ss_len;
+     ^~~~~~
+include/net.h:255:48: error: ‘u_char’ undeclared here (not in a function); did you mean ‘putchar’?
+ #define __SS_PAD1SIZE (__SS_ALIGNSIZE - sizeof(u_char) - sizeof(sa_family_t))
+                                                ^~~~~~
+include/net.h:266:20: note: in expansion of macro ‘__SS_PAD1SIZE’
+     char __ss_pad1[__SS_PAD1SIZE];
+                    ^~~~~~~~~~~~~
+include/net.h:298:2: error: #endif without #if
+ #endif // SRC_INCLUDES_NET_H_
+  ^~~~~
+In file included from src/main.c:23:
+include/net.h:298:2: error: #endif without #if
+ #endif // SRC_INCLUDES_NET_H_
+  ^~~~~
+src/main.c: In function ‘main’:
+src/main.c:39:2: warning: implicit declaration of function ‘bzero’ [-Wimplicit-function-declaration]
+  bzero(&servaddr, sizeof(servaddr));
+  ^~~~~
+make: *** [makefile:29: main.o] Error 1
