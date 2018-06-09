@@ -225,7 +225,7 @@ struct unp_in_pkt_info {
  *
  */
 
-#define MAXLINE  4096
+#define MAXLINES  4096
 #define BUFFSIZE 8192
 
 /** Default Port Settings
