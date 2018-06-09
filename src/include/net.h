@@ -252,11 +252,11 @@ struct unp_in_pkt_info {
 #define __SS_MAXSIZE 128
 #define __SS_ALIGNSIZE (sizeof(int64_t))
 #ifdef HAVE_SOCKADDR_SA_LEN
-#define __SS_PAD1SIZE(__SS_ALIGNSIZE - sizeof(u_char) - sizeof(sa_family_t))
+#define __SS_PAD1SIZE (__SS_ALIGNSIZE - sizeof(u_char) - sizeof(sa_family_t))
 #else
-#define __SS_PAD1SIZE(__SS_ALIGNSIZE - sizeof(sa_family_t))
+#define __SS_PAD1SIZE (__SS_ALIGNSIZE - sizeof(sa_family_t))
 #endif
-#define __SS_PAD2SIZE(__SS_MAXSIZE - 2 * __SS_ALIGNSIZE)
+#define __SS_PAD2SIZE (__SS_MAXSIZE - 2 * __SS_ALIGNSIZE)
 
 struct sockaddr_storage {
 #ifdef HAVE_SOCKADDR_SA_LEN
@@ -269,8 +269,8 @@ struct sockaddr_storage {
 };
 #endif
 
-#define FILE_MODE(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
-#define DIR_MODE(FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
+#define FILE_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+#define DIR_MODE (FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
 
 typedef void Sigfunc(int);
 
