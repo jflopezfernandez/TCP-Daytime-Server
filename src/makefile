@@ -18,7 +18,8 @@ CFLAGS   := -std=c11 -Wall -Wextra -pedantic
 COMPILE  := $(CC) $(CPPFLAGS) $(CFLAGS)
 
 SOURCES  := main.c \
-	          error.c
+	          error.c \
+	          net.c
 
 OBJECTS  := $(patsubst %.c,%.o,$(SOURCES))
 

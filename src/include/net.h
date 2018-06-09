@@ -248,7 +248,7 @@ struct unp_in_pkt_info {
  *
  */
 
-#define SA struct sockaddr
+#define SocketAddress struct sockaddr*
 
 #ifndef HAVE_STRUCT_SOCKADDR_STORAGE
 
@@ -301,6 +301,9 @@ struct timespec {
     long tv_nsec;
 };
 #endif
+
+int
+createSocket(int family, int type, int protocol);
 
 #endif // SRC_INCLUDES_NET_H_
 
