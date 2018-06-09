@@ -20,6 +20,8 @@
 #ifndef SRC_INCLUDES_NET_H_
 #define SRC_INCLUDES_NET_H_
 
+#include "config.h"
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/time.h>
