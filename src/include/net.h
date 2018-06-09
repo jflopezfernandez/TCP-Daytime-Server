@@ -147,7 +147,7 @@
 
 #ifndef HAVE_GETHOSTBYNAME2
 #define gethostbyname2(host,family) gethostbyname((host))
-#undef
+#endif
 
 /** The structure returned by recvfrom_flags():
  *  1. Destination IPv4 address
