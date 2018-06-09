@@ -20,12 +20,42 @@
 
 int
 createSocket(int family, int type, int protocol) {
-	int n;
+	int status = NULL;
 
-	if ((n = socket(family, type, protocol)) < 0) {
+	if ((status = socket(family, type, protocol)) < 0) {
+		/** TODO: Test for specific error
+		 *
+		 *  EACCESS
+		 *  EAFNOSUPPORT
+		 *  EINVAL
+		 *  EINVAL
+		 *  EMFILE
+		 *  ENFILE
+		 *  ENOBUFS
+		 *  EPROTONOSUPPORT
+		 *
+		 */
+
 		err_sys("Socket error");
 	}
 
-	return (n);
+	return status;
 }
 
+int connectSocket(int sockfd, const struct sockaddr *addr, socklen_t addrlen) {
+	int status = NULL;
+
+	if ((n = connect(sockfd, addr, addrlen)) < 0) {
+		err_sys("Connection error");
+	}
+
+	return status;
+}
+
+int readSocketStream() {
+	err_sys("TODO: Implement function (readSocketStream)");
+
+	exit(EXIT_FAILURE);
+
+	return -1;
+}

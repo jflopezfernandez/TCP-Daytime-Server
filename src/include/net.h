@@ -22,24 +22,26 @@
 
 #include "config.h"
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/time.h>
-#include <time.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include <errno.h>
-#include <fcntl.h>
-#include <netdb.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <sys/uio.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include <sys/un.h>
+#include <sys/wait.h>
+
+#include <unistd.h>
 
 #ifdef HAVE_SYS_SELECT_H_
 #include <sys/select.h>
@@ -139,10 +141,6 @@
 
 #ifndef INET6_ADDRSTRLEN
 #define INET6_ADDRSTRLEN 46
-#endif
-
-#ifndef HAVE_BZERO
-#define bzero(ptr,n) memset(ptr, 0, n)
 #endif
 
 #ifndef HAVE_GETHOSTBYNAME2
@@ -302,8 +300,74 @@ struct timespec {
 };
 #endif
 
+/** @fn int createSocket(int domain, int type, int protocol)
+ *
+ *  Original function: socket()
+ *
+ *  @param family
+ *  @param type
+ *  @param protocol
+ *
+ *  @details Creates an endpoint for communication and returns a file descriptor
+ *  that refers to that endpoint. The file descriptor returned by a successful
+ *  call will be the lowest-numbered file descriptor not currently opened for
+ *  the process.
+ *
+ *  The domain argument specifies a communication domain; this selects the
+ *  protocol  family which will be used for communication. These families are
+ *  defined in <sys/socket.h>. The currently understood formats are:
+ *
+ *  AF_UNIX, AF_LOCAL   Local communication
+ *  AF_INET             IPv4 Internet Protocols
+ *  AF_INET6            IPv6 Internet Protocols
+ *  AF_PACKET           Low-level packet interface
+ *  AF_ALG              Interface to kernel crypto API
+ *
+ *  The socket has the indicated type, which specifies the communication
+ *  semantics. Currently defined types are:
+ *
+ *  SOCK_STREAM         Provides sequenced, reliable, two-way connection-based
+ *                      byte streams. An out-of-band data transmission
+ *                      mechanism may be supported.
+ *
+ *  SOCK_DGRAM          Supports datagrams (connectionless, unreliable messages
+ *                      of a fixed maximum length).
+ *
+ *  SOCK_SEQPACKET      Provides a sequenced, reliable, two-way connection-based
+ *                      data transmission path for datagrams of fixed maximum
+ *                      length; a consumer is required to read an entire packet
+ *                      with each input system call.
+ *
+ *  SOCK_RAW            Provides raw network protocol access.
+ *
+ *  SOCK_RDM            Provides a reliable datagram layer that does not
+ *                      guarantee ordering.
+ *
+ *  SOCK_PACKET         Obsolete and should not be used in new programs.
+ *
+ *  Since Linux 2.6.27, the type argument serves a second purpose: in addition
+ *  to specifying a socket type, it may include the bitwise OR of any of the
+ *  following values, to modify the behavior of socket():
+ *
+ *  SOCK_NONBLOCK       Set the O_NONBLOCK file status flag on the new open
+ *                      file descriptor. Using this flag saves extra calls to
+ *                      fcntl(2) to achieve the same result.
+ *
+ *  SOCK_CLOEXEC        Set the close-on-exec (FD_CLOEXEC) flag on the new file
+ *                      descriptor. See the description of the O_CLOEXEC flag
+ *                      in open(2) for reasons why this may be useful.
+ *
+ *  @returns int
+ *
+ */
+
 int
 createSocket(int family, int type, int protocol);
+
+int
+connectSocket(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+
+int readSocketStream();
 
 #endif // SRC_INCLUDES_NET_H_
 
